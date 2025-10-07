@@ -31,11 +31,11 @@ class SchoolBase:
             teacher={"TLastName": row[0], "TFirstname": row[1],"Classroom":int(row[2])}
             self.teachers.append(teacher)
     
-    def search_teacher_by_classroom(self,classroom,print=False):
+    def search_teacher_by_classroom(self,classroom,show=False):
         start_time = time.time()
         results = [t for t in self.teachers if t["Classroom"] == classroom]
         elapsed_time = time.time() - start_time
-        if print:
+        if show:
             if results:
                 print(f"Вчителі з класу {classroom}")
                 for teacher in results:
@@ -172,7 +172,7 @@ while True:
     elif choise.lower().startswith("c"):
         if "teacher" in choise.lower():
             classroom = int(choise.split()[1])
-            database.search_teacher_by_classroom(classroom,print=True)
+            database.search_teacher_by_classroom(classroom,show=True)
         else:
             classroom = int(choise.split()[1])
             database.search_by_classroom(classroom)
@@ -197,3 +197,4 @@ while True:
         print("Недійсна команда")
       
         
+
